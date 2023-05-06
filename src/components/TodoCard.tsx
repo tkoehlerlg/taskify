@@ -14,8 +14,11 @@ const TodoCard: React.FC<Props> = ({todo, updateTodo, deleteTodo}) => {
         updateTodo(todo)
     }}>
         <span className="checkmark">{todo.isCompleted ? <FaRegCheckCircle/> : <FaRegCircle/>}</span>
-        <p>{todo.todo}</p>
-        <span className="icon" onClick={(e) => {
+        <div>
+            <h4>{todo.todo}</h4>
+            <p>{todo.detailsText}</p>
+        </div>
+        <span className="trash" onClick={(e) => {
             e.stopPropagation()
             deleteTodo(todo.id)
         }}><FaTrashAlt/></span>

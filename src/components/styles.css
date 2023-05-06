@@ -36,11 +36,12 @@
 }
 .todos {
     margin-top: 20px;
+    margin-bottom: 20px;
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
     width: 90%;
-    row-gap: 10px;
+    gap: 10px;
 }
 .todo_card {
     background: rgba(255, 255, 255, 0.6);
@@ -52,25 +53,31 @@
     padding: 10px 15px;
     cursor: pointer;
 }
-.todo_card p {
+.todo_card h4 {
+    font-size: 18px;
     margin: auto auto auto 0px;
+}
+.todo_card p {
+    font-size: 14px;
+    margin: 0;
+    padding-right: 5px;
 }
 .todo_card .checkmark * {
     height: 22px;
     width: 22px;
-    margin-right: 9px;
+    margin-right: 10px;
 }
 
-.todo_card .icon {
+.todo_card .trash {
+    margin-left: auto;
     background-color: red;
     height: 30px;
     width: 30px;
     color: white;
     padding: 0px 8px;
     border-radius: 20px;
-    margin: auto 0px auto 10px;
 }
-.todo_card .icon * {
+.todo_card .trash * {
     width: 100%;
     height: 100%;
 }

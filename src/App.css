@@ -14,14 +14,12 @@
     font-weight: normal;
     color: #333333;
 }
-
 .heading {
     font-size: 40px;
     font-family: "Shrikhand", cursive;
     color: #FF5733;
     border: #00BFFF;
 }
-
 p {
     font-size: 16px;
     text-align: center;

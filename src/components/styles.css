@@ -54,3 +54,24 @@
 .todo_cell p {
     margin: auto;
 }
+
+@media (max-width: 800px) {
+    .input_box {
+        font-size: 14px;
+        height: 45px;
+        padding-bottom: 5px;
+    }
+    .input_submit {
+        font-weight: normal;
+        font-size: 14px;
+        color: white;
+        background: #FFA500;
+        border: 0px;
+    }
+    .input_submit:focus {
+        border: 0px;
+    }
+    .input_submit:active {
+        background-color: #FF8C00;
+    }
+}

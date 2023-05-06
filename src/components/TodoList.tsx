@@ -1,5 +1,6 @@
 import React from "react";
 import {Todo} from "../models/Todo";
+import TodoCard from "./TodoCard";
 import "./styles.css"
 
 interface Props {
@@ -8,12 +9,26 @@ interface Props {
 }
 
 const TodoList: React.FC<Props> = ({todos, setTodos}) => {
+
+    function updateTodo(editedTodo: Todo) {
+        setTodos(todos.map((todo): Todo => {
+            if (todo.id === editedTodo.id) {
+                return editedTodo
+            } else { return todo }
+        }))
+    }
+
+    function deleteTodo(id: number) {
+        setTodos(todos.filter(function (todo) {
+            return todo.id !== id
+        }))
+    }
+
     return <div className="todos">
         {todos.map((todo) => (
-            <div className="todo_cell" key={todo.id}>
-                <p>{todo.todo}</p>
-            </div>
+            <TodoCard todo={todo} key={todo.id} updateTodo={updateTodo} deleteTodo={deleteTodo}/>
         ))}
+        
     </div>
 }
 

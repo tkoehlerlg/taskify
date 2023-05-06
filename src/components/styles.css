@@ -42,18 +42,40 @@
     width: 90%;
     row-gap: 10px;
 }
-.todo_cell {
+.todo_card {
     background: rgba(255, 255, 255, 0.6);
     border-radius: 10px;
     border: 3px solid #FF8C00;
     min-width: 300px;
-    width: 40vw;
     display: flex;
     flex-wrap: nowrap;
-    padding: 10px 20px;
+    padding: 10px 15px;
+    cursor: pointer;
 }
-.todo_cell p {
-    margin: auto;
+.todo_card p {
+    margin: auto auto auto 0px;
+}
+.todo_card .checkmark * {
+    height: 22px;
+    width: 22px;
+    margin-right: 9px;
+}
+
+.todo_card .icon {
+    background-color: red;
+    height: 30px;
+    width: 30px;
+    color: white;
+    padding: 0px 8px;
+    border-radius: 20px;
+    margin: auto 0px auto 10px;
+}
+.todo_card .icon * {
+    width: 100%;
+    height: 100%;
+}
+.todo_card .icon:active {
+    background-color: #FF8C00;
 }
 
 @media (max-width: 800px) {

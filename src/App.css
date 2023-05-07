@@ -24,6 +24,22 @@ p {
     font-size: 16px;
     text-align: center;
 }
+.github_link {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    color: black;
+}
+.github_link * {
+    height: 28px;
+    width: 28px;
+}
+.github_link:hover {
+    color: darkorange;
+}
+.github_link:active {
+    color: orange;
+}
 
 @media (max-width: 800px) {
     .App {
@@ -35,5 +51,14 @@ p {
     }
     p {
         font-size: 14px;
+    }
+    .github_link {
+        right: 10px;
+    }
+    .github_link:hover {
+        color: black;
+    }
+    .github_link:active {
+        color: darkorange;
     }
 }

@@ -3,6 +3,7 @@ import InputField from "./components/InputField";
 import TodoList from "./components/TodoList";
 import {Todo} from "./models/Todo"
 import {Configuration, OpenAIApi} from "openai";
+import {FaGithub} from "react-icons/fa";
 import './App.css';
 
 
@@ -59,6 +60,7 @@ function App() {
   }, [todos]);
 
   return <div className="App">
+    <a className="github_link" href="http://github.com/tkoehlerlg/taskify-react" target="_blank"><FaGithub/></a>
     <span className="heading">Taskify</span>
     <p>Die <b>Erinnerungs-App</b> – Erinnere dich an das Unvergessliche. Entwickelt mit <b>React</b> !</p>
     <InputField todo={todo} loading={loading} setTodo={setTodo} handleAdd={handleAdd}/>

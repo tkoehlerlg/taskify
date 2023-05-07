@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import InputField from "./components/InputField";
 import TodoList from "./components/TodoList";
 import {Todo} from "./models/Todo"
@@ -26,27 +26,38 @@ function App() {
       });
       //console.log("response", result.data.choices[0].text);
       setLoading(false);
-      return (result.data.choices[0].text ?? "Text nicht lesbar").replace(/(\r\n|\n|\r)/gm, "")
+      return (result.data.choices[0].text ?? "Text nicht lesbar").replace(/(\r\n|\n|\r)/gm, " ").trim()
     } catch (e) {
       console.log(e);
       setLoading(false);
       return "Fehler"
     }
   }
-
   async function handleAdd(e: React.FormEvent) {
     e.preventDefault()
     if (todo) {
-      const id = Date.now()
-      setTodos([...todos, {
-        id: id,
-        todo,
+      todos.unshift({
+        id: Date.now(),
+        todo: todo.trim(),
         detailsText: await generateFunnyText(todo),
         isCompleted: false
-      }])
+      })
+      setTodos(todos)
+      localStorage.setItem('todos', JSON.stringify(todos));
       setTodo("")
     }
   }
+
+  useEffect(() => {
+    const todos: Todo[] = JSON.parse(localStorage.getItem('todos') || '{}');
+    if (todos) {
+      console.log("loaded"+JSON.stringify(todos))
+      setTodos(todos);
+    }
+  }, []);
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos));
+  }, [todos]);
 
   return <div className="App">
     <span className="heading">Taskify</span>

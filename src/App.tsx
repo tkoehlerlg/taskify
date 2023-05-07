@@ -43,7 +43,6 @@ function App() {
         isCompleted: false
       })
       setTodos(todos)
-      localStorage.setItem('todos', JSON.stringify(todos));
       setTodo("")
     }
   }
@@ -51,7 +50,6 @@ function App() {
   useEffect(() => {
     const todos: Todo[] = JSON.parse(localStorage.getItem('todos') || '{}');
     if (todos) {
-      console.log("loaded"+JSON.stringify(todos))
       setTodos(todos);
     }
   }, []);

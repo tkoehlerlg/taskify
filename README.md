@@ -12,7 +12,7 @@ Taskify ist eine moderne und ansprechende Todo-App, die ich mit React entwickelt
 
 ## Installation
 
-Stelle sicher, dass du [Node.js](https://nodejs.org/) und [npm](https://www.npmjs.com/) auf Ihrem System installiert haben.
+Stelle sicher, dass du [Node.js](https://nodejs.org/) und [npm](https://www.npmjs.com/) auf deinem System installiert hast.
 
 1. Klone das Repository:
 

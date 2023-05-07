@@ -1,6 +1,6 @@
 # Taskify – Die Todo-App
 
-Taskify ist eine moderne und ansprechende Todo-App, die du mit React entwickelt hast. Sie verwendet ein minimalistisches Design mit lebendigen Neonfarben, um Aufgaben und Erinnerungen auf ansprechende und organisierte Weise zu verwalten. Die App nutzt OpenAI's Davinci, um lustige und interessante Texte unter jedem Todo hinzuzufügen.
+Taskify ist eine moderne und ansprechende Todo-App, die ich mit React entwickelt habe. Sie verwendet ein minimalistisches Design mit lebendigen Neonfarben, um Aufgaben und Erinnerungen auf ansprechende und organisierte Weise zu verwalten. Die App nutzt OpenAI's Davinci Model, um lustige und interessante Texte unter jedem Todo hinzuzufügen.
 
 ## Funktionen
 

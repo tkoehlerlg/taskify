@@ -43,6 +43,7 @@ function App() {
         isCompleted: false
       })
       setTodos(todos)
+      localStorage.setItem('todos', JSON.stringify(todos));
       setTodo("")
     }
   }

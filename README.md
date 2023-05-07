@@ -18,7 +18,7 @@ Stellen Sie sicher, dass Sie [Node.js](https://nodejs.org/) und [npm](https://ww
 
 ```bash
 git clone https://github.com/tkoehlerlg/taskify-react.git
-cd taskify
+cd taskify-react
 ```
 
 Installiere alle notwendigen Dependecies:

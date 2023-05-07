@@ -21,10 +21,16 @@ git clone https://github.com/tkoehlerlg/taskify-react.git
 cd taskify-react
 ```
 
-Installiere alle notwendigen Dependecies:
+2. Installiere alle notwendigen Dependecies:
 
 ```bash
 npm install
+```
+
+3. Laufen lassen
+
+```bash
+npm start
 ```
 
 ## Mitwirkende

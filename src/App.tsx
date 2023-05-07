@@ -20,13 +20,13 @@ function App() {
     try {
       const result = await openai.createCompletion({
         model: "text-davinci-003",
-        prompt: "Schreibe einen lustigen Satz auf Deutsch mit maximal 5 Wörtern ohne Zeilenumbrüche zu dieser Aufgabe: "+todo,
-        temperature: 1,
-        max_tokens: 500,
+        prompt: `Schreibe einen lustigen oder interessanten Satz auf Deutsch mit maximal 5 Wörtern ohne Zeilenumbrüche zu einer Aufgabe aus einer Todo Listen App.\n\nTodo: ${todo}\nTipp/ Witz: `,
+        temperature: 0.48,
+        max_tokens: 150,
       });
       //console.log("response", result.data.choices[0].text);
       setLoading(false);
-      return (result.data.choices[0].text ?? "Text nicht lesbar").replace(/(\r\n|\n|\r)/gm, " ")
+      return (result.data.choices[0].text ?? "Text nicht lesbar").replace(/(\r\n|\n|\r)/gm, "")
     } catch (e) {
       console.log(e);
       setLoading(false);

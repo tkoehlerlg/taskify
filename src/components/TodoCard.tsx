@@ -14,7 +14,7 @@ const TodoCard: React.FC<Props> = ({todo, updateTodo, deleteTodo}) => {
         updateTodo(todo)
     }}>
         <span className="checkmark">{todo.isCompleted ? <FaRegCheckCircle/> : <FaRegCircle/>}</span>
-        <div>
+        <div className="todo_card_details">
             <h4>{todo.todo}</h4>
             <p>{todo.detailsText}</p>
         </div>

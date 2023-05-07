@@ -53,11 +53,16 @@
     padding: 10px 15px;
     cursor: pointer;
 }
-.todo_card h4 {
+.todo_card_details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.todo_card_details h4 {
     font-size: 18px;
     margin: auto auto auto 0px;
 }
-.todo_card p {
+.todo_card_details p {
     font-size: 14px;
     margin: 0;
     padding-right: 5px;

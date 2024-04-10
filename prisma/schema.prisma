@@ -17,4 +17,17 @@ model User {
   lastName  String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  Todos     Todo[]
+}
+
+model Todo {
+  id         Int      @id @default(autoincrement())
+  uuid       String   @unique @default(uuid())
+  title      String
+  ai_comment String?
+  completed  Boolean  @default(false)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  userId     Int
+  user       User     @relation(fields: [userId], references: [id])
 }

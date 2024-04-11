@@ -29,8 +29,8 @@ export async function GET() {
                 email: user.email ?? '',
             },
         })
-        return NextResponse.redirect(env.KINDE_POST_REGISTER_REDIRECT_URL)
+        return NextResponse.redirect(env.INTERN_POST_REGISTER_REDIRECT_URL)
     }
 
-    return NextResponse.redirect(env.KINDE_POST_LOGIN_REDIRECT_URL)
+    return NextResponse.redirect(env.INTERN_POST_LOGIN_REDIRECT_URL)
 }

@@ -1,13 +1,14 @@
-import { Shrikhand } from 'next/font/google'
 import {
     RegisterLink,
     LoginLink,
 } from '@kinde-oss/kinde-auth-nextjs/components'
 import { cn } from '@/utils/cn'
+import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server'
+import Link from 'next/link'
+import { shrikhand } from '@/utils/fonts'
 
-const shrikhand = Shrikhand({ weight: '400', subsets: ['latin'] })
-
-export default function Home() {
+export default async function Home() {
+    const { isAuthenticated } = getKindeServerSession()
     return (
         <main className='flex min-h-screen flex-col items-center justify-center gap-1 p-24'>
             <h1
@@ -24,25 +25,27 @@ export default function Home() {
             </p>
 
             <div className='mt-4 flex flex-row gap-4'>
-                <LoginLink>
-                    <div className='rounded-lg border-2 border-gray-600 bg-white px-[39px] py-[10px]'>
-                        Sign in
-                    </div>
-                </LoginLink>
-                <RegisterLink>
-                    <div className='bg-logo-red rounded-lg px-10 py-3'>
-                        Create Account
-                    </div>
-                </RegisterLink>
+                {(await isAuthenticated()) ? (
+                    <Link href={'/todos'}>
+                        <div className='rounded-lg border-2 border-gray-600 bg-white px-[39px] py-[10px]'>
+                            Go to Todos!
+                        </div>
+                    </Link>
+                ) : (
+                    <>
+                        <LoginLink>
+                            <div className='rounded-lg border-2 border-gray-600 bg-white px-[39px] py-[10px]'>
+                                Sign in
+                            </div>
+                        </LoginLink>
+                        <RegisterLink>
+                            <div className='bg-logo-red rounded-lg px-10 py-3'>
+                                Create Account
+                            </div>
+                        </RegisterLink>
+                    </>
+                )}
             </div>
         </main>
     )
 }
-
-/*
-import {RegisterLink, LoginLink} from "@kinde-oss/kinde-auth-nextjs/components";
-
-<LoginLink>Sign in</LoginLink>
-
-<RegisterLink>Sign up</RegisterLink>
- */

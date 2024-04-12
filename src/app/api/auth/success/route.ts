@@ -3,7 +3,7 @@ import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server'
 import { NextResponse } from 'next/server'
 import { env } from '@/utils/env'
 
-export async function GET() {
+export const GET = async () => {
     const { getUser, isAuthenticated } = getKindeServerSession()
     try {
         const user = await getUser()

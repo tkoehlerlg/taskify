@@ -42,6 +42,7 @@ export function TodosGrid({ todos, className }: TodosGridProps) {
     }
 
     async function deleteTodo(todo: Todo) {
+        setTodos((todos) => todos.filter((t) => t.uuid !== todo.uuid))
         deleteTodoByUuid(todo.uuid).then(revalidatePage)
     }
 

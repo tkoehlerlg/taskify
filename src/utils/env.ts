@@ -2,7 +2,6 @@ import { cleanEnv, str, url } from 'envalid'
 
 export const env = cleanEnv(process.env, {
     MISTRAL_API_KEY: str(),
-    OPENAI_API_KEY: str(),
     SUPABASE_DATABASE_URL: str(),
     SUPABASE_DIRECT_URL: str(),
     KINDE_CLIENT_ID: str(),

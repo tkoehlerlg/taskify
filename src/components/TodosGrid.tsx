@@ -1,9 +1,9 @@
 'use client'
 
-import { useOptimistic } from 'react'
+import { useEffect, useOptimistic, useState } from 'react'
 import { Todo } from '@/types/todos'
 import { AddTodoTextField } from '@/components/AddTodoTextField'
-import { createTodo } from '@/queries/todos'
+import { createTodo, deleteTodoByUuid } from '@/queries/todos'
 import { cn } from '@/utils/cn'
 import { revalidatePath } from '@/actions/revalidatePath'
 import { uuid } from 'uuidv4'
@@ -14,9 +14,10 @@ interface TodosGridProps {
 }
 
 export function TodosGrid({ todos, className }: TodosGridProps) {
+    const [_todos, setTodos] = useState<Todo[]>(todos)
     const revalidatePage = revalidatePath.bind(null, '/todos')
     const [optimisticTodos, addOptimisticTodo] = useOptimistic<Todo[], string>(
-        todos,
+        _todos,
         (state, newTodo) => [
             ...state,
             {
@@ -40,6 +41,14 @@ export function TodosGrid({ todos, className }: TodosGridProps) {
         }).then(revalidatePage)
     }
 
+    async function deleteTodo(todo: Todo) {
+        deleteTodoByUuid(todo.uuid).then(revalidatePage)
+    }
+
+    useEffect(() => {
+        setTodos(todos)
+    }, [todos])
+
     return (
         <div className={cn('flex min-h-[80vh] w-full flex-col', className)}>
             <AddTodoTextField addTodo={addTodo} />
@@ -53,7 +62,15 @@ export function TodosGrid({ todos, className }: TodosGridProps) {
                 ) : (
                     <div className='grid grid-cols-1 gap-4'>
                         {todos.map((todo) => (
-                            <li key={todo.uuid}>{todo.title}</li>
+                            <li key={todo.uuid}>
+                                {todo.title}{' '}
+                                <button
+                                    onClick={() => deleteTodo(todo)}
+                                    className='bg-red-500'
+                                >
+                                    [-]
+                                </button>
+                            </li>
                         ))}
                     </div>
                 )}

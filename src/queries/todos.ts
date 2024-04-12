@@ -28,6 +28,14 @@ export async function createTodo(data: CreateTodo): Promise<Todo> {
     })
 }
 
+export async function deleteTodoByUuid(uuid: string) {
+    return prismaWrite.todo.delete({
+        where: {
+            uuid,
+        },
+    })
+}
+
 export async function batchCreateTodos(data: CreateTodo[]) {
     const userId = await getUserId()
     if (!userId) throw new Error('No user found')

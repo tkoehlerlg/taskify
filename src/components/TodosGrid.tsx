@@ -2,7 +2,6 @@
 
 import { useOptimistic } from 'react'
 import { Todo } from '@/types/todos'
-import { useState } from 'react'
 import { AddTodoTextField } from '@/components/AddTodoTextField'
 import { createTodo } from '@/queries/todos'
 import { cn } from '@/utils/cn'
@@ -33,7 +32,11 @@ export function TodosGrid({ todos, className }: TodosGridProps) {
         addOptimisticTodo(newTodo)
         console.log('added optimistic todo')
         console.log(optimisticTodos)
-        // createTodo({ title }).then(revalidatePage)
+        createTodo({
+            title: newTodo,
+            ai_comment: null,
+            completed: false,
+        }).then(revalidatePage)
     }
 
     return (

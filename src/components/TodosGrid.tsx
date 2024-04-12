@@ -29,12 +29,12 @@ export function TodosGrid({ todos, className }: TodosGridProps) {
         ]
     )
 
-    async function addTodo(newTodo: string) {
-        addOptimisticTodo(newTodo)
+    async function addTodo(title: string) {
+        addOptimisticTodo(title)
         console.log('added optimistic todo')
         console.log(optimisticTodos)
         createTodo({
-            title: newTodo,
+            title: title,
             ai_comment: null,
             completed: false,
         }).then(revalidatePage)

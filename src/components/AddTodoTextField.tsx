@@ -3,7 +3,7 @@
 import { FormEvent, useState } from 'react'
 
 interface AddTodoTextFieldProps {
-    addTodo: (newTodo: string) => void
+    addTodo: (title: string) => void
     className?: string
 }
 

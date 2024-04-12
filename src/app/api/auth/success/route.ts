@@ -13,8 +13,9 @@ export const GET = async () => {
 
     const user = await getUser()
 
-    if (!user || !user.id)
-        throw new Error('something went wrong with authentication ' + user)
+    if (!user) {
+        return NextResponse.redirect(env.KINDE_SITE_URL)
+    }
 
     let dbUser = await prismaWrite.user.findUnique({
         where: { kindeId: user.id },

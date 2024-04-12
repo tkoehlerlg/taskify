@@ -6,6 +6,7 @@ import { AddTodoTextField } from '@/components/AddTodoTextField'
 import { createTodo } from '@/queries/todos'
 import { cn } from '@/utils/cn'
 import { revalidatePath } from '@/actions/revalidatePath'
+import { uuid } from 'uuidv4'
 
 interface TodosGridProps {
     todos: Todo[]
@@ -20,7 +21,7 @@ export function TodosGrid({ todos, className }: TodosGridProps) {
             ...state,
             {
                 title: newTodo,
-                uuid: Math.random().toString(),
+                uuid: uuid(),
                 ai_comment: null,
                 completed: false,
                 userId: -1,

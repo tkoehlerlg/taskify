@@ -29,7 +29,7 @@ export function AddTodoTextField({
                         value={text}
                         onChange={(e) => setText(e.target.value)}
                         placeholder='Add a todo'
-                        className='w-36 border-none bg-transparent outline-none'
+                        className='w-72 border-none bg-transparent outline-none'
                     />
 
                     <button

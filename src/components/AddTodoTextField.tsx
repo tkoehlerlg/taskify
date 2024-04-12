@@ -3,7 +3,7 @@
 import { FormEvent, useState } from 'react'
 
 interface AddTodoTextFieldProps {
-    addTodo: (title: string) => void
+    addTodo: (newTodo: string) => void
     className?: string
 }
 
@@ -22,7 +22,7 @@ export function AddTodoTextField({
 
     return (
         <form onSubmit={addTodo} className={className}>
-            <div className='fixed'>
+            <div className='w-fit'>
                 <div className='flex flex-row rounded-lg bg-white px-4 py-2'>
                     <input
                         type='text'
@@ -34,7 +34,7 @@ export function AddTodoTextField({
 
                     <button
                         type='submit'
-                        className='text-logo-red font-semibold'
+                        className='font-semibold text-logo-red'
                     >
                         Add
                     </button>

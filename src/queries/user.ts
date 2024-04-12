@@ -1,7 +1,7 @@
 'use server'
 
 import { prismaRead } from '@/utils/prisma'
-import { User } from '@/types/user'
+import { User, userPrismaSelect } from '@/types/user'
 import { getKindeId } from '@/utils/kinde/getKindeId'
 
 export async function getUser(): Promise<User | null> {
@@ -11,6 +11,7 @@ export async function getUser(): Promise<User | null> {
         where: {
             kindeId: kindeId,
         },
+        select: userPrismaSelect,
     })
 }
 
@@ -21,6 +22,9 @@ export async function getUserId(): Promise<number | null> {
     const user = await prismaRead.user.findUnique({
         where: {
             kindeId: kindeId,
+        },
+        select: {
+            id: true,
         },
     })
     return user?.id ?? null

@@ -1,6 +1,6 @@
 'use server'
 
-import { Todo } from '@/types/todos'
+import { CreateTodo, Todo, todoPrismaSelect } from '@/types/todos'
 import { prismaRead, prismaWrite } from '@/utils/prisma'
 import { getKindeId } from '@/utils/kinde/getKindeId'
 import { getUserId } from '@/queries/user'
@@ -8,12 +8,11 @@ import { getUserId } from '@/queries/user'
 export async function getTodos(count?: number): Promise<Todo[]> {
     return prismaRead.todo.findMany({
         take: count,
+        select: todoPrismaSelect,
     })
 }
 
-export async function createTodo(
-    data: Omit<Todo, 'uuid' | 'userId' | 'ai_comment' | 'completed'>
-): Promise<Todo> {
+export async function createTodo(data: CreateTodo): Promise<Todo> {
     const kindeId = await getKindeId()
     if (!kindeId) throw new Error('No kindeId found')
     return prismaWrite.todo.create({
@@ -21,16 +20,15 @@ export async function createTodo(
             ...data,
             user: {
                 connect: {
-                    kindeId: kindeId,
+                    kindeId,
                 },
             },
         },
+        select: todoPrismaSelect,
     })
 }
 
-export async function batchCreateTodos(
-    data: Omit<Todo, 'uuid' | 'userId' | 'ai_comment' | 'completed'>[]
-) {
+export async function batchCreateTodos(data: CreateTodo[]) {
     const userId = await getUserId()
     if (!userId) throw new Error('No user found')
     await prismaWrite.todo.createMany({

@@ -9,6 +9,21 @@ const config: Config = {
     theme: {
         extend: {
             colors: {
+                'neon-purple': {
+                    DEFAULT: '#9B5DE5',
+                },
+                'neon-pink': {
+                    DEFAULT: '#F15BB5',
+                },
+                'neon-yellow': {
+                    DEFAULT: '#FEE440',
+                },
+                'neon-blue': {
+                    DEFAULT: '#00BBF9',
+                },
+                'neon-turquoise': {
+                    DEFAULT: '#00F5D4',
+                },
                 'logo-red': '#ff5733',
             },
             backgroundImage: {

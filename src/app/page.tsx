@@ -13,7 +13,7 @@ export default async function Home() {
         <main className='flex min-h-screen flex-col items-center justify-center gap-1 p-24'>
             <h1
                 className={cn(
-                    'text-logo-red text-6xl font-bold',
+                    'text-6xl font-bold text-logo-red',
                     shrikhand.className
                 )}
             >
@@ -35,11 +35,11 @@ export default async function Home() {
                     <>
                         <LoginLink>
                             <div className='rounded-lg border-2 border-gray-600 bg-white px-[39px] py-[10px]'>
-                                Sign in
+                                C
                             </div>
                         </LoginLink>
                         <RegisterLink>
-                            <div className='bg-logo-red rounded-lg px-10 py-3'>
+                            <div className='rounded-lg bg-logo-red px-10 py-3'>
                                 Create Account
                             </div>
                         </RegisterLink>

@@ -9,25 +9,56 @@ datasource db {
 }
 
 model User {
-  id        Int      @id @default(autoincrement())
-  uuid      String   @unique @default(uuid())
-  kindeId   String   @unique
-  email     String   @unique
+  id        Int       @id @default(autoincrement())
+  uuid      String    @unique @default(uuid())
+  kindeId   String    @unique
+  email     String    @unique
   firstName String
   lastName  String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  Todos     Todo[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  Todos     Task[]
+  Projects  Project[]
 }
 
-model Todo {
-  id         Int      @id @default(autoincrement())
-  uuid       String   @unique @default(uuid())
-  title      String
-  ai_comment String?
-  completed  Boolean  @default(false)
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
-  userId     Int
-  user       User     @relation(fields: [userId], references: [id])
+model Project {
+  id          Int      @id @default(autoincrement())
+  uuid        String   @unique @default(uuid())
+  title       String
+  slug        String   @unique
+  accentColor String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  userId      Int
+  user        User     @relation(fields: [userId], references: [id])
+  Todos       Task[]
+}
+
+model Task {
+  id          Int       @id @default(autoincrement())
+  uuid        String    @unique @default(uuid())
+  title       String
+  description String?
+  tags        String[]
+  comments    String[]
+  completed   Boolean   @default(false)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  userId      Int
+  projectId   Int?
+  user        User      @relation(fields: [userId], references: [id])
+  project     Project?  @relation(fields: [projectId], references: [id])
+  SubTasks    SubTask[]
+}
+
+model SubTask {
+  id          Int      @id @default(autoincrement())
+  uuid        String   @unique @default(uuid())
+  title       String
+  description String?
+  completed   Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  taskId      Int
+  task        Task     @relation(fields: [taskId], references: [id])
 }

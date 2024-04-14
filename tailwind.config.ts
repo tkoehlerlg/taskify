@@ -24,13 +24,22 @@ const config: Config = {
                 'neon-turquoise': {
                     DEFAULT: '#00F5D4',
                 },
-                'logo-red': '#ff5733',
+                accent: '#ff5733',
             },
             backgroundImage: {
                 'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
                 'gradient-conic':
                     'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
             },
+        },
+        borderRadius: {
+            none: '0',
+            sm: '0.125rem',
+            DEFAULT: '0.25rem',
+            md: '0.375rem',
+            lg: '10px',
+            full: '9999px',
+            large: '12px',
         },
     },
     plugins: [],

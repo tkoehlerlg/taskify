@@ -1,8 +1,5 @@
 import { PrismaClient } from '@prisma/client'
 
-export type { PrismaOmit } from './prismaOmit'
-export type { PrismaSelect } from './prismaSelect'
-
 const prismaClientSingleton = () => {
     return new PrismaClient()
 }
